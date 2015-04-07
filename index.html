@@ -56,7 +56,10 @@
 						Real-Time vs Interactive vs Batch processing
 					</p>
 					<p class="fragment">
-						Programming at higher level of abstraction
+						Write apps in Java, Scala or Python.
+					</p>
+					<p class="fragment">
+						Map Reduce is only a part of supported capabilities.
 					</p>
 
 					<aside class="notes">
@@ -100,10 +103,10 @@
 				<section>
 					<section>
 						<h2>Spark - Goals</h2>
-						<p>Generalize Map Reduce</p>
+						<p class="fragment">Generalize Map Reduce</p>
 						<ul>
-							<li>fast data sharing</li>
-							<li>general DAGs (Directed Acyclic Graphs)</li>
+							<li class="fragment">fast data sharing</li>
+							<li class="fragment">general DAGs (Directed Acyclic Graphs)</li>
 						</ul>
 						<aside class="notes">
 							goal was to generalize map reduce to support new apps with the same engine - SPARK. Two small additions are enough to express the previous models.
@@ -111,19 +114,23 @@
 						</aside>
 					</section>
 					<section>
-						<h2>Code Size</h2>
 						<img src="lib/img/codesize.png"></img>
 					</section>
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<section>
+						<h2>Example - Wordcount</h2>
+						<p>
+							Problem: Count how often each word appears in a collection of text docs
+						</p>
+						<aside class="notes">
+							A distributed computing framework that can run WordCount efficiently in parallel at scale   can likely handle much larger and more interesting compute problems
+						</aside>
+					</section>
+					<section>
+
+					</section>
 				</section>
 
 				<section>

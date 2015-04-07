@@ -42,7 +42,6 @@
 			<div class="slides">
 				<section>
 					<h1>Apache Spark</h1>
-					<h3>Cluster Computing</h3>
 					<p>
 						<small>By <a href="http://joshfermin.me">Josh Fermin</a></small>
 					</p>
@@ -74,20 +73,47 @@
 					<section>
 						<h2>History</h2>
 						<img src="lib/img/timeline.png"></img>
+						<aside class="notes">
+							As you can see, map reduce emerged around 2002 and hadoop following around 2006 and then spark came around 2010, which came from the limitations of map reduce
+						</aside>
 					</section>
 					<section>
-						<h2>History</h2>
+						<h2>History - Map Reduce</h2>
 						<p>
-							Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
+							Two major problems:
 						</p>
+						<ul>
+							<li class="fragment">difficulty programming in Map Reduce</li>
+							<li class="fragment">Batch style jobs not fitting all use cases</li>
+						</ul>
+					</section>
+					<section>
+						<h2>History - Workarounds</h2>
+						<img src="lib/img/workarounds.png"></img>
+
+						<aside class="notes">
+							many different technologies came out because of the limitations of map reduce. Storm being a real time processing framework. Pregel - large scale graph computing
+						</aside>
 					</section>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
+					<section>
+						<h2>Spark - Goals</h2>
+						<p>Generalize Map Reduce</p>
+						<ul>
+							<li>fast data sharing</li>
+							<li>general DAGs (Directed Acyclic Graphs)</li>
+						</ul>
+						<aside class="notes">
+							goal was to generalize map reduce to support new apps with the same engine - SPARK. Two small additions are enough to express the previous models.
+							approach that is more efficient for engine and much simpler for end users
+						</aside>
+					</section>
+					<section>
+						<h2>Code Size</h2>
+						<img src="lib/img/codesize.png"></img>
+					</section>
 				</section>
 
 				<section>

@@ -120,25 +120,67 @@
 
 				<section>
 					<section>
-						<h2>Example - Wordcount</h2>
+						<h2>Learning Spark API</h2>
 						<p>
-							Problem: Count how often each word appears in a collection of text docs
+							Problem: Count the amount of lines where a certain word shows up
 						</p>
 						<aside class="notes">
-							A distributed computing framework that can run WordCount efficiently in parallel at scale   can likely handle much larger and more interesting compute problems
+							
 						</aside>
 					</section>
 					<section>
+						<h2>Spark Shell - Scala</h2>
+							<pre><code>./bin/spark-shell/</pre></code>
+						<aside class="notes">
+							Starts the shell in scala using ./bin/spark-shell/
+							can also start in python ./bin/pyspark
+						</aside>
+					</section>
 
+					<section>
+					<h2> Spark Context </h2>
+					<pre><code>scala> val textFile = sc.textFile("README.md")
+textFile: spark.RDD[String] = spark.MappedRDD@2ee9b6e3</pre></code>
+					<ul>
+						<li>Start spark context</li>
+						<li>Creates RDD</li>
+					</ul>
+					<aside class="notes">
+						Next line starts a spark context which represents a connection to a spark cluster.
+						Can be used to create RDDs.
+					</aside>
+					</section>
+					
+					<section>
+						<h2>RDDs</h2>
+						<ul>
+							<li>Spark's primary abstraction</li>
+							<li>Distributed collection of items</li>
+							<li>RDDs can be created from Hadoop input formats (HDFS)</li>
+						</ul>
+					</section>
+					<section data-markdown>
+					<script type="text/template">
+					<h2>RDD Actions</h2>
+```scala
+scala> textFile.count() // Number of items in this RDD
+res0: Long = 126
+
+scala> textFile.first() // First item in this RDD
+res1: String = # Apache Spark
+```
+</script>
+					</section>
+
+					<section>
+					<pre><code>
+scala> val linesWithSpark = textFile.filter(line => line.contains("Spark"))
+linesWithSpark: spark.RDD[String] = spark.FilteredRDD@7dd4af09
+					</code></pre>
 					</section>
 				</section>
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
+				
 
 				<section data-markdown>
 					<script type="text/template">

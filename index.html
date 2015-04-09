@@ -68,6 +68,8 @@
 						Allows you to do a variety of things including real-time vs interactive vs batch
 
 						can write applications in Java, Scala, Python.
+
+						fast interactive queries, streaming analytics, graph analytics and machine learning.
 					</aside>
 				</section>
 
@@ -77,7 +79,7 @@
 						<h2>History</h2>
 						<img src="lib/img/timeline.png"></img>
 						<aside class="notes">
-							As you can see, map reduce emerged around 2002 and hadoop following around 2006 and then spark came around 2010, which came from the limitations of map reduce
+							Spark was developed in 2009 at UC Berkeley AMPLab, open sourced in 2010, and became a top-level Apache project in February, 2014. It has since become  one of the largest open source communities in big data, with over 200 contributors in 50+ organizations.
 						</aside>
 					</section>
 					<section>
@@ -89,6 +91,17 @@
 							<li class="fragment">difficulty programming in Map Reduce</li>
 							<li class="fragment">Batch style jobs not fitting all use cases</li>
 						</ul>
+						<aside class="notes">
+						Writing MapReduce code sucks, because the API is rudimentary, hard to test, and easy to screw up. Tool like Cascading, Pig, Hive, etc., make this easier, but that’s just more evidence that the core API is fundamentally flawed.
+
+						It requires lots of code to perform even the simplest of tasks.
+
+						Everything gets written to disk, including all the interim steps.
+
+						In many cases you need a chain of jobs to perform your analysis, making #1 even worse.
+
+						
+						</aside>
 					</section>
 					<section>
 						<h2>History - Workarounds</h2>
@@ -161,9 +174,28 @@ textFile: spark.RDD[String] = spark.MappedRDD@2ee9b6e3</pre></code>
 						<ul>
 							<li>Spark's primary abstraction</li>
 							<li>Distributed collection of items</li>
-							<li>RDDs can be created from Hadoop input formats (HDFS)</li>
+							<li>Can be stored in the volatile memory or in a persistent storage </li>
 						</ul>
 					</section>
+
+					<section>
+						<h2>RDDs</h2>
+						<img src="http://3.bp.blogspot.com/-J7R0TMXgz04/UuKIuoeANDI/AAAAAAAAKxM/RyuhMwSLLS0/s1600/mr-flow.png"></img>
+						<ul>
+						<li> Reading and writing happens too often for each Map Reduce (MR)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>RDDs</h2>
+						<img src="http://2.bp.blogspot.com/-QjW6MrkQ4hE/UuKIgacmG4I/AAAAAAAAKxE/EGXeX7UUDxc/s1600/rdd-flow.png"></img>
+						<ul>
+						<li> Transformations from one to another are through memory and doesn't touch the disk (except for RDD2)</li>
+						<li>When the memory runs out, it is usually moved over to persistent storage.</li>
+						</ul>
+						<aside class="notes">Note that in the above flow, the RDD2 is persisted to disk because of Check Pointing. In the work flow, for any failure during the transformations t3 or t4, the entire work flow need not be played back because the RDD2 is persisted to disk. It would be enough if transformation t3 and t4 are played back.</aside>
+					</section>
+
 					<section data-markdown>
 					<script type="text/template">
 					<h2>RDD Actions</h2>
@@ -277,12 +309,29 @@ res8: Long = 15</code></pre>
 					</section>
 				</section>
 
+				<section>
+				<h2>Where to go from here</h2>
+				<ul>
+				<li><a href="https://spark.apache.org/docs/latest/programming-guide.html">Spark Programming Gudie</a></li>
+				<li><a href="https://spark.apache.org/docs/latest/cluster-overview.html">Deployment overview</a></li>
+				<li>Spark Examples</li>
+				</ul>
+				</section>
 
+				<section>
+				<h2>Who uses spark?</h2>
+				<ul>
+				<li>SK Telecom - Analyze mobile usage patterns</li>
+				<li>Freeman Lab - analyzing/visualizing patterns in large scale recordings of brain acitivty</li>
+				<li>Yandex - Using spark to process islands identified from  a search robot</li>
+				</ul>
+				</section>
 				<section>
 					<h2>Resources</h2>
 					<ul>
 						<li><a href="https://spark.apache.org/docs/latest/index.html">Spark Quick Start / Spark Docs</a></li>
 						<li><a href="http://stanford.edu/~rezab/sparkclass/slides/itas_workshop.pdf">Intro To Apache Spark - Stanford</a></li>
+						<li><a href="http://www.thecloudavenue.com/2014/01/resilient-distributed-datasets-rdd.html">Learning about RDDs</a></li>
 					</ul>
 				</section>
 			</div>
